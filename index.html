@@ -24,13 +24,18 @@ body {
 <div id="paper"></div>
 <p id="info"><label>Agents:</label> <span id="agents"></span></p>
 <p>
-  <b>How to play:</b> You command a set of agents. Your goal is to kill a sniper
-  hiding in the field. Click in the field to place an agent. The agent will kill
-  the sniper if the sniper is in the agent's range. The sniper will kill any
-  agent in its range. Once you have placed all your agents then the next agent
-  you place will move one of the agents you previously placed (and is not dead)
-  to the new position.
+  You command a set of <em>agents</em>. Your goal is to kill a
+  <em>sniper</em> hiding in the field. Click in the field to place an agent. The
+  agent will kill the sniper if the sniper is in the agent's range. The sniper
+  will kill any agent in its range. Once you have placed all your agents then
+  the next agent you place will move one of the agents you previously placed
+  (and is not dead) to the new position.
 <p>
+  <b>You win</b> when you hit the sniper first.
+<p><img src="win.png">
+<p>
+  <b>You lose</b> when all your guys are dead before you hit the sniper.
+<p><img src="lose.png"> 
 <script src="raphael-min.js" type="text/javascript" charset="utf-8"></script>
 <script src="sniper.js" type="text/javascript" charset="utf-8"></script>
 </body>
