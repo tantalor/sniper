@@ -46,6 +46,17 @@ function Sniper(r) {
   this.y = r + Math.random() * (paper.height - 2 * r);
 };
 
+Sniper.prototype.reveal = function(alive) {
+  var color = alive ? 'black' : 'red';
+  paper.circle(this.x, this.y, 3)
+      .attr('fill', color)
+      .attr('stroke-width', 0);
+  paper.circle(this.x, this.y, this.r)
+      .attr('fill', '#0000')
+      .attr('stroke', color)
+      .attr('stroke-width', 1);
+};
+
 var sniper = new Sniper(150);
 
 paper.canvas.onclick = function(evt) {
@@ -60,20 +71,18 @@ paper.canvas.onclick = function(evt) {
     var r = Math.sqrt(dx * dx + dy * dy);
     
     if (r < agent.r) {
-      // Reveal the sniper. You win!
-      paper.circle(sniper.x, sniper.y, 3)
-          .attr('fill', 'red')
-          .attr('stroke-width', 0);
-      paper.circle(sniper.x, sniper.y, sniper.r)
-          .attr('fill', '#0000')
-          .attr('stroke', 'red')
-          .attr('stroke-width', 1);
+      // You win!
+      sniper.reveal(false);
       // Stop the game.
       agents.length = 0;
     } else if (r < sniper.r) {
       // This agent is dead.
       agent.alive = false;
       setAgents(agents.length);
+      if (agents.length == 0) {
+        // You lose.
+        sniper.reveal(true);
+      }
     } else {
       // Use this agent again.
       agents.unshift(agent);
