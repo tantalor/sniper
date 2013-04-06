@@ -8,8 +8,28 @@ body {
   margin: 30px auto;
 }
 
-#paper svg {
+#game {
   border: solid 1px black;
+  position: relative;
+  width: 800px;
+  height: 600px;
+}
+
+#game #info {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  z-index: 1;
+}
+
+#game #paper {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#paper svg {
   cursor: pointer;
 }
 </style>
@@ -21,8 +41,11 @@ body {
   alt="Fork me on GitHub">
 </a>
 
-<div id="paper"></div>
-<p id="info"><label>Agents:</label> <span id="agents"></span></p>
+<div id="game">
+  <div id="paper"></div>
+  <p id="info"><label>Agents:</label> <span id="agents"></span></p>
+</div>
+
 <p>
   You command a set of <em>agents</em>. Your goal is to kill a
   <em>sniper</em> hiding in the field. Click in the field to place an agent. The
