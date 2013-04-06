@@ -68,15 +68,17 @@ paper.canvas.onclick = function(evt) {
           .attr('fill', '#0000')
           .attr('stroke', 'red')
           .attr('stroke-width', 1);
+      // Stop the game.
       agents.length = 0;
     } else if (r < sniper.r) {
       // This agent is dead.
       agent.alive = false;
+      setAgents(agents.length);
     } else {
+      // Use this agent again.
       agents.unshift(agent);
     }
     
     agent.update();
-    setAgents(agents.length);
   }
 };
